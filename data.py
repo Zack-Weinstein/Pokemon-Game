@@ -64,7 +64,7 @@ ATTACKS = {
     'Magnemite': [ 'Tackle', 'Flash Cannon', 'Thunder Shock', 'Thunderbolt'],
     'Bulbasaur': ['Tackle', 'Vine Whip', 'Razor Leaf'],
     'Charmander': ['Scratch', 'Ember', 'Fire Spin'],
-    'Beedrill': ['Peck', 'Twineedle', '`Rage', 'Fury Attack', 'Outrage'],
+    'Beedrill': ['Peck', 'Twineedle', 'Rage', 'Fury Attack', 'Outrage'],
     'Golem': [ 'Tackle', 'Rock Throw', 'Rock Slide', 'Earthquake'],
     'Dewgong': ['Aqua Jet',  'Ice Shard', 'Headbutt'],
     'Hypno': ['Pound', 'Confusion', 'Dream Eater'],

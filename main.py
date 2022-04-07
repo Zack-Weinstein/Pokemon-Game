@@ -162,7 +162,6 @@ class Pokemon():
     ###
     attack_def_ratio = (self.attack/self.defense)
     movepower = MOVES_DICTIONARY[currentMove]['power']
-    print("********************MOVEPOWER IS: ", movepower)
     modifier = 1 #edit this
     damage = ((((((2*self.level)/5)+2)* movepower)* attack_def_ratio)/50)* modifier
     return round(damage)
