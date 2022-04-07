@@ -1,0 +1,10 @@
+ADDITIONAL FEATURES:
+- intro splash screen
+- outro splash screen
+- view game instructions
+
+
+
+
+- "revives" or "healing"???
+- after beating 3 pokemon, choose a pokemon to increase health

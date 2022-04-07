@@ -1,0 +1,27 @@
+1.Create a Pokémon class that contains the following information:
+
+    Attributes: name, type_, HP, Attack, Defense, Speed, Experience, Moves, and Level
+
+    Methods must include: battle, calculate_damage, update_level
+
+2.Create a Pokédex class that stores Pokémon and information about these Pokémon. Think of this like the Hand class in BlackJack. It will store all of the Pokémon you capture and can use.
+
+3.The user will need to choose a Bulbusaur, Charmander, or Squirtle to start with. Think carefully about user interface. How will a user play the game? How will a person that has never played before know how to play? How will a person choose which move to use based on which Pokémon they chose? What if the user types in "squirtle" versus "Squirtle"? Strive to make the game user-friendly.
+
+4.The computer should randomly generate a Pokémon out of the 14 characters for the user to fight against. Whichever Pokémon has the higher speed gets to attack first. They proceed to alternate attacking each other until one of them has fainted. For simplicity, you may assume that the computer always chooses the most damaging move against the user's Pokémon.
+
+5.Once a user has beaten a Pokémon, they add that Pokémon to their collection, and can then choose to use that Pokémon to fight their next enemy with as well. For example, if the user starts with Bulbasaur, but then defeats a randomly generated Cutiefly, then the user can then choose to attack their new randomly generated enemy, Dewgong, with either Bulbusaur, Charmander, Squirtle, or Cutiefly. Of course, if the user lost to Cutiefly and in doing so their HP points dropped to zero or below, then the game is over, and the game should print "Your Pokémon fainted. Game over."
+
+6.If the user has beaten a Pokémon, then their experience and level should be updated accordingly.
+
+7.The code should pass the pycodestyle linter, be well commented, and each function/method should have a docstring.
+
+8.Speaking of functions, this is a large project and each groupmate should be in charge of several functions. Planning out what each function's input and output should be will make the task much less daunting. Remember that you can define functions but then save writing their details for later by using "pass" inside the function. Breaking the program up into smaller functions like determine_critical_hit, generate_enemy, choose_move, choose_character, etc. and then using "if __name__ == “__main__”:" to incorporate all of your work will be a must. 
+
+9.Start simple and add complexity as you go. For example, try to get each Pokemon's HP to deduct a simple 10 HP for each hit it takes. You can always add in the more complicated damage calculating formula later.
+
+10.If you need to convert a user's input into a class, this StackOverflow article may be helpful to you:
+
+    https://stackoverflow.com/questions/7719466/how-to-convert-a-string-to-a-function-in-python
+
+11.Extension: Pygame is a Python package designed for writing video games. It includes computer graphics and sound libraries. In the images folder you will find pictures of each Pokemon. Read some online Pygame tutorials in order to figure out how to view images of the Pokemon involved in each battle. Can you create character images and create bars for how much HP, Experience, and Level your Pokemon has?
