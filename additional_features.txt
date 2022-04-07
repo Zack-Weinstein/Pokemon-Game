@@ -2,6 +2,5 @@ ADDITIONAL FEATURES:
 - intro splash screen
 - view game instructions
 - player wins if they collect all the pokemon characters
-
-
 - after beating 3 pokemon, player chooses a pokemon to restore health
+- prints results at the end of the game, like how many pokemon fainted and were battled
