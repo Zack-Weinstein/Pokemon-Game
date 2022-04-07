@@ -78,24 +78,27 @@ class Pokemon():
                             if move <= len(attacking.moves):
                                 valid = True
                             else:
-                                msg = 'Please enter a # corresponding with a move: '
+                                msg = 'Enter a move #: '
                         except:
-                            msg = 'Please enter a # corresponding with a move: '
+                            msg = 'Enter a move #: '
                     else:
-                        msg = 'Please enter a # corresponding with a move: '
+                        msg = 'Enter a move #: '
                 currentMove = attacking.moves[(int(move)) - 1]
                 print(f'You selected {currentMove} which deals ', end="")
-                print(f'{attacked.calculate_damage(currentMove, attacking)} damage.')
-              
+                stuffinside = attacked.calculate_damage(currentMove, attacking)
+                print(f'{stuffinside} damage.')
             else:
                 print('computer turn...')
                 currentMove = attacking.moves[1]
                 for move in attacking.moves:
-                    if attacked.calculate_damage(move, attacking) >= attacked.calculate_damage(currentMove, attacking):
+                    atk1 = attacked.calculate_damage(move, attacking)
+                    atk2 = attacked.calculate_damage(currentMove, attacking)
+                    if atk1 >= atk2:
                         currentMove = move
-              
             attacked.HP -= attacked.calculate_damage(currentMove, attacking)
-            print(f'{attacking.name} used {currentMove} on {attacked.name}, dealing {attacked.calculate_damage(currentMove, attacking)} damage.\n')
+            t2 = attacked.calculate_damage(currentMove, attacking)
+            print(f'{attacking.name} used {currentMove} ', end="")
+            print(f'on {attacked.name}, dealing {t2} damage.\n')
             if self.HP < 0:
                 self.HP = 0
             if comp_pokemon.HP < 0:
@@ -114,7 +117,8 @@ class Pokemon():
                 # battling = False
                 return comp_pokemon
             elif comp_pokemon.isItDead():
-                print(f"\n\nYOU WON! YOU ACQUIRED A NEW {comp_pokemon.name.upper()}. ")
+                namey = comp_pokemon.name.upper()
+                print(f"\n\nYOU WON! YOU ACQUIRED A NEW {namey}. ")
                 global acquired
                 acquired += 1
                 self.experience += 10
@@ -127,29 +131,25 @@ class Pokemon():
         attack_def_ratio = (self.attack/self.defense)
         movepower = MOVES_DICTIONARY[currentMove]['power']
         rando = (random.randint(85, 101))/100
-        
         type_multiplier = 1
         ne = MOVES_DICTIONARY[currentMove]['not very effective against']
         for i in self.type:
-          if i in ne:
-            type_multiplier *= .5
-
+            if i in ne:
+                type_multiplier *= .5
         se = MOVES_DICTIONARY[currentMove]['super effective against']
         for i in self.type:
-          if i in ne:
-            type_multiplier *= 2           
-
+            if i in se:
+                type_multiplier *= 2
         # MOVES_DICTIONARY[currentMove]['type']
         #  is the type of the current attacker, n
         #  and you need to compare it to the self to see if the c
         # modifier = critical x random x type
-        #critical = 
         modifier = rando * type_multiplier
         damage = ((((2*self.level)/5)+2) * movepower)
         damage *= ((attack_def_ratio)/50) * modifier
         return round(damage)
 
-    # the @property makes it so that the level is updated 
+    # the @property makes it so that the level is updated
     # when experience is updated
     @property
     def level(self):
@@ -275,7 +275,7 @@ def run_game():
     dead_tally = 0
     # if new to the game, loads game rules page
     if rules in ['yes', 'y', 'ya', 'yea', 'yeah', 'yep',
-                'yes please', 'of course', 'hell yeah']:
+                 'yes please', 'of course', 'hell yeah']:
         game_rules()
     t.sleep(2)
     clear_output()
@@ -298,8 +298,7 @@ def run_game():
 
     # initializing computer's pokedex
     # (random computer choice)
-    comp_pm = Pokemon('Charmander')
-    #comp_pm = Pokemon(random.choice(list(CHARACTERS.keys())))
+    comp_pm = Pokemon(random.choice(list(CHARACTERS.keys())))
     # comp_pd = Pokedex(comp_pm)
     global acquired
     acquired = 0
@@ -318,29 +317,28 @@ def run_game():
 
         round_num += 1
         clear_output()
-
-        
         if acquired > 0 and acquired % 3 == 0 and dfhzxkj:
             print()
             dfhzxkj = False
             for i in range(len(player_pd.contents)):
                 print(f'{i+1}. {player_pd.contents[i].name}')
             print("\n**BONUS** You have defeated 3 pokemon,", end="")
-            print("so now you get to restore\none of your pokemon to it's former glory.")
+            print("so now you get to restore", end="")
+            print("one of your pokemon to it's former glory.")
             print("Which one shall we fix up?")
             toRestore = p_choose_pokemon(player_pd.contents)
             x = toRestore
-            #x = player_pd.contents[toRestore]
+            # x = player_pd.contents[toRestore]
             x.HP = HIT_POINTS[x.name]
             print()
 
         if attack_next == 'new':
-            print(f'\n\n------------------ ROUND {round_num} ------------------')
-            #player_pd.add_pokemon(Pokemon(comp_pm.name))
+            dash = "------------------"
+            print(f'\n\n{dash} ROUND {round_num} {dash}')
+            # player_pd.add_pokemon(Pokemon(comp_pm.name))
             if comp_pm.name in unseen:
                 unseen.remove(comp_pm.name)
-            comp_pm = Pokemon('Charmander')
-            #comp_pm = Pokemon(random.choice(list(CHARACTERS.keys())))
+            comp_pm = Pokemon(random.choice(list(CHARACTERS.keys())))
             # comp_pd = Pokedex(comp_pm)
         if type(attack_next) == Pokemon:
             dead_tally += 1
