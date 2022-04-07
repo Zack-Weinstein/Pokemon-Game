@@ -2,5 +2,9 @@ ADDITIONAL FEATURES:
 - intro splash screen
 - view game instructions
 - player wins if they collect all the pokemon characters
-- after beating 3 pokemon, player chooses a pokemon to restore health
+- for every 3 pokemon the player beats, player chooses a pokemon to restore health
 - prints results at the end of the game, like how many pokemon fainted and were battled
+
+NOTE:
+Matt - 
+We intentionally left the two excepts in the code bare because we are testing for several possible error types. (So please ignore the two "bare except" flags that show up when the code is passed through a linter.)
