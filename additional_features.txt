@@ -1,10 +1,7 @@
 ADDITIONAL FEATURES:
 - intro splash screen
-- outro splash screen
 - view game instructions
+- player wins if they collect all the pokemon characters
 
 
-
-
-- "revives" or "healing"???
-- after beating 3 pokemon, choose a pokemon to increase health
+- after beating 3 pokemon, player chooses a pokemon to restore health

@@ -1,27 +1,20 @@
 '''
 ------------- TO DO -------------
- - run final code through a linter and add docstrings
- - document additional features (write them somewhere)
- - also show if user is winning or losing.... (like hp bars dropping - opposite of progress/loading bar)
- - game instructions function
+ - run final code through a linter
+
+
 
 
 -------- IF TIME ---------
  - fix print statements with '-------' to be the same length
 '''
 
-#1.Create a Pokémon class that contains the following information:
-#    Attributes: name, type_, HP, Attack, Defense, Speed, Experience, Moves, and Level
-#    Methods must include: battle, calculate_damage, update_level
 
 from data import *
 import random
 from IPython.display import clear_output
 import time as t
-#%load_ext pycodestyle_magic
-#%flake8_on
-#! pip install pycodestyle flake8 --user
-#! pip install pycodestyle_magic --user
+
 
 # pm = pokemon
 # pd = pokedex
@@ -162,7 +155,19 @@ class Pokemon():
     ###
     attack_def_ratio = (self.attack/self.defense)
     movepower = MOVES_DICTIONARY[currentMove]['power']
-    modifier = 1 #edit this
+    
+    # rando = (random.randint(85,101))/100
+    #type = compare curret move TYPE to self TYPE, and determine effectiveness
+    # typemultiplier 
+    if self.type in MOVES_DICTIONARY[currentMove]['not very effective against']:
+
+    if self.type in :
+      
+    
+    #MOVES_DICTIONARY[currentMove]['type'] is the type of the current attacker, n and you need to compare it to the self to see if the c
+    #modifier = critical x random x type
+    modifier = 3
+    #critical * rando  * type
     damage = ((((((2*self.level)/5)+2)* movepower)* attack_def_ratio)/50)* modifier
     return round(damage)
   
@@ -206,11 +211,6 @@ class Pokedex():
     elif len(self.contents) > 0:
       return False
 
-  def view_pokemon(self):
-    '''Shows all of the pokemon in the list of Pokedex'''
-    for poke in self.contents:
-      print(poke.name)
-      # THIS MIGHT BE USELESS
       
   
 
@@ -224,7 +224,7 @@ def splash_screen():
 def game_rules():
   '''This prints the rules of the game'''
   print("\n------------ HOW TO PLAY POKEMON ------------\n")
-  print(" In Pokemon, you use charcters to fight other characters. \n You start out by choosing an initial Pokemon and use that to fight the computer Pokemon.\n After beating the computer's pokemon, you collect their pokemon to your pokedex.\n Your objective is to catch them all!!! ")
+  print(" In Pokemon, you use characters to fight other characters. \n You start out by choosing an initial pokemon and use that to fight the computer pokemon.\n After beating the computer's pokemon, you collect their pokemon to your pokedex.\n Your objective is to catch them all!!! ")
 
 def p_choose_pokemon(choices):
   '''Shows the pokemon choices at game intro'''
@@ -293,6 +293,7 @@ def run_game():
   t.sleep(2)
   clear_output()
   round = 1
+  dfhzxkj = True
   print(f'\n\n------------------ ROUND {round} ------------------')
 
   # initializing player's pokedex
@@ -304,6 +305,10 @@ def run_game():
   player_pm = choice # bulbasaur, charmander, or squirtle
   global player_pd #makes player_pokedex a global variable
   player_pd = Pokedex(player_pm)
+  player_pd.add_pokemon(Pokemon('Golem'))
+  player_pd.add_pokemon(Pokemon('Gengar'))
+  player_pd.add_pokemon(Pokemon('Pikachu'))
+  player_pd.add_pokemon(Pokemon('Jigglypuff'))
   
   # initializing computer's pokedex
   ## random computer choice
@@ -329,7 +334,15 @@ def run_game():
 
     round += 1
     clear_output()
-    
+
+    if (len(player_pd.contents)-1) % 3 == 0 and dfhzxkj:
+      print()
+      dfhzxkj = False
+      for i in range(len(player_pd.contents)):
+        print(f'{i}. {player_pd.contents[i].name}')
+      toRestore = int(input("Which one shall we fix up? "))
+      player_pd.contents[toRestore].HP = HIT_POINTS[player_pd.contents[toRestore].name]
+      print()
     
     if attack_next == 'new':
       print(f'\n\n------------------ ROUND {round} ------------------')
